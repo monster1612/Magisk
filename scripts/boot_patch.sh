@@ -23,6 +23,9 @@
 #                              and patch the ramdisk for Magisk support
 # chromeos           folder    This folder should store all the utilities and keys to sign
 #                  (optional)  a chromeos device. Used for Pixel C
+# amazon             folder    A folder containing the device-specific tools needed to 'resign'
+#                              a boot image after patching so it will work on an Amazon device
+#                              (currently only good for patching the 2nd gen HD 7" or 8.9")
 #
 # If the script is not running as root, then the input boot image should be a stock image
 # or have a backup included in ramdisk internally, since we cannot access the stock boot
