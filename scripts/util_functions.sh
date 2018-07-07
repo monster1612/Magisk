@@ -97,6 +97,7 @@ get_flags() {
   # override variables
   getvar KEEPVERITY
   getvar KEEPFORCEENCRYPT
+  getvar SIGNAMAZONBOOT
   HIGHCOMP=false
   if [ -z $KEEPVERITY ]; then
     KEEPVERITY=false
@@ -116,6 +117,17 @@ get_flags() {
     else
       KEEPFORCEENCRYPT=false
     fi
+  fi
+  if [ -z $SIGNAMAZONBOOT ]; then
+    SIGNAMAZONBOOT = false
+    device = `grep_cmdline androidboot.hardware`
+    for kfhd in tate jem; do
+      if [ "$kfhd" = "$device" ]; then
+        SIGNAMAZONBOOT = true
+        ui_print "Device identified as $device, so sign boot after patching"
+      else
+        SIGNAMAZONBOOT = false
+      fi
   fi
 }
 
